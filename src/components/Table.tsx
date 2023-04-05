@@ -11,14 +11,17 @@ import {
 import Question from "../types/Question";
 import stringToTitleCase from "../utils/stringToTitleCase";
 import getDifficultyColor from "../utils/getDifficultyColor";
+import PriorityStatus from "./PriorityStatus";
+import getPriorityBgColor from "../utils/getPriorityBgColor";
 
 interface TableProps {
   questions: Question[];
+  handlePriorityToggle: (id: number, priority: Question["priority"]) => void;
 }
 
 const headings = ["Priority", "Title", "Topic", "Difficulty"];
 
-export default function Table({ questions }: TableProps) {
+export default function Table({ questions, handlePriorityToggle }: TableProps) {
   return (
     <div>
       <TableContainer component={Paper}>
@@ -34,9 +37,16 @@ export default function Table({ questions }: TableProps) {
           </TableHead>
           <TableBody>
             {questions.map((question) => (
-              <TableRow key={question.questionId}>
+              <TableRow
+                key={question.questionId}
+                sx={{ bgcolor: getPriorityBgColor(question.priority) }}
+              >
                 <TableCell>
-                  <Typography>{question.priority}</Typography>
+                  <PriorityStatus
+                    initialPriority={question.priority}
+                    handlePriorityToggle={handlePriorityToggle}
+                    questionId={question.questionId}
+                  />
                 </TableCell>
                 <TableCell>
                   <Typography>{`${question.questionId}. ${question.questionTitle}`}</Typography>

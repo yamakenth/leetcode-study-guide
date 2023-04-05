@@ -12,6 +12,17 @@ function App() {
     createQuestions(initialQuestions)
   );
 
+  function handlePriorityToggle(id: number, priority: Question["priority"]) {
+    const newQuestions = [...questions];
+    const targetQuestion = newQuestions.find(
+      (question) => question.questionId === id
+    );
+    if (targetQuestion) {
+      targetQuestion.priority = priority;
+    }
+    setQuestions(newQuestions);
+  }
+
   return (
     <div className="App">
       <Header />
@@ -21,7 +32,10 @@ function App() {
             <Cards />
           </Grid>
           <Grid item xs={12} md={9}>
-            <Table questions={questions} />
+            <Table
+              questions={questions}
+              handlePriorityToggle={handlePriorityToggle}
+            />
           </Grid>
         </Grid>
       </Container>
