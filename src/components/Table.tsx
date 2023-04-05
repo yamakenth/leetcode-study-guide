@@ -1,19 +1,19 @@
 import {
   Paper,
-  Table,
+  Table as MaterialTable,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
 } from "@mui/material";
-import questions from "../../data/question-list.json";
+import questions from "../data/question-list.json";
 
-export default function MainTable() {
+export default function Table() {
   return (
     <div>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} size="small">
+        <MaterialTable sx={{ minWidth: 650 }} size="small">
           <TableHead>
             <TableRow>
               <TableCell>Priority</TableCell>
@@ -32,7 +32,7 @@ export default function MainTable() {
               </TableRow>
             ))}
           </TableBody>
-        </Table>
+        </MaterialTable>
       </TableContainer>
     </div>
   );

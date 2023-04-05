@@ -1,7 +1,6 @@
-import "./App.css";
-import MainTable from "./components/MainTable/MainTable";
-import Header from "./components/Header/Header";
-import Cards from "./components/Cards/Cards";
+import Table from "./components/Table";
+import Header from "./components/Header";
+import Cards from "./components/Cards";
 import { Container, Grid } from "@mui/material";
 
 function App() {
@@ -14,7 +13,7 @@ function App() {
             <Cards />
           </Grid>
           <Grid item xs={12} md={9}>
-            <MainTable />
+            <Table />
           </Grid>
         </Grid>
       </Container>
