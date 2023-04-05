@@ -17,12 +17,17 @@ import getPriorityBgColor from "../utils/getPriorityBgColor";
 
 interface TableProps {
   questions: Question[];
+  difficultyFilter: Question["difficulty"][];
   handlePriorityToggle: (id: number, priority: Question["priority"]) => void;
 }
 
 const headings = ["Priority", "Title", "Topic", "Difficulty"];
 
-export default function Table({ questions, handlePriorityToggle }: TableProps) {
+export default function Table({
+  questions,
+  difficultyFilter,
+  handlePriorityToggle,
+}: TableProps) {
   return (
     <div>
       <TableContainer component={Paper}>
@@ -37,38 +42,42 @@ export default function Table({ questions, handlePriorityToggle }: TableProps) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {questions.map((question) => (
-              <TableRow
-                key={question.questionId}
-                sx={{ bgcolor: getPriorityBgColor(question.priority) }}
-              >
-                <TableCell>
-                  <PriorityStatus
-                    initialPriority={question.priority}
-                    handlePriorityToggle={handlePriorityToggle}
-                    questionId={question.questionId}
-                  />
-                </TableCell>
-                <TableCell>
-                  <Link
-                    href={question.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    underline="hover"
-                  >
-                    <Typography>{`${question.questionId}. ${question.questionTitle}`}</Typography>
-                  </Link>
-                </TableCell>
-                <TableCell>
-                  <Typography>{question.topic}</Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography color={getDifficultyColor(question.difficulty)}>
-                    {stringToTitleCase(question.difficulty)}
-                  </Typography>
-                </TableCell>
-              </TableRow>
-            ))}
+            {questions
+              .filter((question) =>
+                difficultyFilter.includes(question.difficulty)
+              )
+              .map((question) => (
+                <TableRow
+                  key={question.questionId}
+                  sx={{ bgcolor: getPriorityBgColor(question.priority) }}
+                >
+                  <TableCell>
+                    <PriorityStatus
+                      initialPriority={question.priority}
+                      handlePriorityToggle={handlePriorityToggle}
+                      questionId={question.questionId}
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <Link
+                      href={question.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      underline="hover"
+                    >
+                      <Typography>{`${question.questionId}. ${question.questionTitle}`}</Typography>
+                    </Link>
+                  </TableCell>
+                  <TableCell>
+                    <Typography>{question.topic}</Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography color={getDifficultyColor(question.difficulty)}>
+                      {stringToTitleCase(question.difficulty)}
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </MaterialTable>
       </TableContainer>

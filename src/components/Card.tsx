@@ -7,7 +7,7 @@ interface CardProps {
 export default function Card({ children, ...props }: CardProps = {}) {
   return (
     <MaterialCard
-      sx={{ maxWidth: 240, height: 180, marginBottom: 4 }}
+      sx={{ maxWidth: 240, minHeight: 180, marginBottom: 4 }}
       {...props}
     >
       <CardContent>{children}</CardContent>
