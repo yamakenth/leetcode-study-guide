@@ -5,7 +5,7 @@ import {
   Typography,
 } from "@mui/material";
 import Card from "./Card";
-import stringToTitleCase from "../utils/stringToTitleCase";
+import stringToTitleCase from "../../utils/stringToTitleCase";
 import { ChangeEvent } from "react";
 
 interface TopicCheckboxCardProps {

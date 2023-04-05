@@ -5,10 +5,10 @@ import {
   Typography,
 } from "@mui/material";
 import Card from "./Card";
-import getDifficultyColor from "../utils/getDifficultyColor";
-import { Difficulty } from "../types/Question";
+import getDifficultyColor from "../../utils/getDifficultyColor";
+import { Difficulty } from "../../types/Question";
 import { ChangeEvent } from "react";
-import stringToTitleCase from "../utils/stringToTitleCase";
+import stringToTitleCase from "../../utils/stringToTitleCase";
 
 interface DifficultyCheckboxCardProps {
   difficultyFilter: Difficulty[];

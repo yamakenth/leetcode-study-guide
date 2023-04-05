@@ -1,8 +1,9 @@
-import { Grid, Typography } from "@mui/material";
-import Card from "../components/Card";
-import DifficultyCheckboxCard from "../components/DifficultyCheckboxCard";
+import { Grid } from "@mui/material";
+import DifficultyCheckboxCard from "../components/Card/DifficultyCheckboxCard";
 import { Difficulty } from "../types/Question";
-import TopicCheckboxCard from "../components/TopicCheckboxCard";
+import TopicCheckboxCard from "../components/Card/TopicCheckboxCard";
+import QuestionSolved from "../types/QuestionSolved";
+import QuestionsSolvedCard from "../components/Card/QuestionsSolvedCard";
 
 interface CardContainerProps {
   difficultyFilter: Difficulty[];
@@ -10,6 +11,7 @@ interface CardContainerProps {
   topicFilter: string[];
   filterByDifficulties: (difficulties: Difficulty[]) => void;
   filterByTopics: (topics: string[]) => void;
+  questionsSolved: QuestionSolved;
 }
 
 export default function CardContainer({
@@ -18,15 +20,12 @@ export default function CardContainer({
   topicFilter,
   filterByTopics,
   filterByDifficulties,
+  questionsSolved,
 }: CardContainerProps) {
   return (
     <Grid container spacing={1}>
       <Grid item xs={4} md={12}>
-        <Card>
-          <Typography variant="h6" component="h2" gutterBottom>
-            Solved Problems
-          </Typography>
-        </Card>
+        <QuestionsSolvedCard questionsSolved={questionsSolved} />
       </Grid>
       <Grid item xs={4} md={12}>
         <DifficultyCheckboxCard

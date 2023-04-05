@@ -1,12 +1,13 @@
 import Table from "./components/Table";
 import Header from "./containers/Header";
-import Cards from "./containers/CardContainer";
+import CardContainer from "./containers/CardContainer";
 import { Container, Grid } from "@mui/material";
 import questionJSON from "./data/question-list.json";
 import Question, { Difficulty, Priority } from "./types/Question";
 import createQuestions from "./utils/createQuestions";
 import useLocalStorageState from "./hooks/useLocalStorageState";
 import createTopicList from "./utils/createTopicList";
+import calculateQuestionsSolved from "./utils/calculateQuestionsSovled";
 
 const initialQuestions = createQuestions(questionJSON);
 const initialDifficultyFilter: Difficulty[] = ["easy", "medium", "hard"];
@@ -50,12 +51,13 @@ function App() {
       <Container sx={{ padding: "24px 0" }}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}>
-            <Cards
+            <CardContainer
               difficultyFilter={difficultyFilter}
               topicList={topicList}
               topicFilter={topicFilter}
               filterByDifficulties={filterByDifficulty}
               filterByTopics={filterByTopics}
+              questionsSolved={calculateQuestionsSolved(questions)}
             />
           </Grid>
           <Grid item xs={12} md={9}>
