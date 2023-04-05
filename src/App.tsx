@@ -1,10 +1,11 @@
-import { Typography } from "@mui/material";
 import React from "react";
+import "./App.css";
+import MainTable from "./components/MainTable";
 
 function App() {
   return (
     <div className="App">
-      <Typography>Hello</Typography>
+      <MainTable />
     </div>
   );
 }
