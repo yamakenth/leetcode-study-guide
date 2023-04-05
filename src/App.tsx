@@ -2,11 +2,13 @@ import Table from "./components/Table";
 import Header from "./components/Header";
 import Cards from "./components/Cards";
 import { Container, Grid } from "@mui/material";
-import initialQuestions from "./data/question-list.json";
+import questionJSON from "./data/question-list.json";
 import Question from "./types/Question";
 import createQuestions from "./utils/createQuestions";
 import useLocalStorageState from "./hooks/useLocalStorageState";
+import createTopicList from "./utils/createTopicList";
 
+const initialQuestions = createQuestions(questionJSON);
 const initialDifficultyFilter: Question["difficulty"][] = [
   "easy",
   "medium",
@@ -16,11 +18,15 @@ const initialDifficultyFilter: Question["difficulty"][] = [
 function App() {
   const [questions, setQuestions] = useLocalStorageState<Question[]>(
     "questions",
-    createQuestions(initialQuestions)
+    initialQuestions
   );
   const [difficultyFilter, setDifficultyFilter] = useLocalStorageState<
     Question["difficulty"][]
   >("difficulty-filter", initialDifficultyFilter);
+  const topicList = createTopicList(questions);
+  const [topicFilter, setTopicFilter] = useLocalStorageState<
+    Question["topic"][]
+  >("topic-filter", topicList);
 
   function handlePriorityToggle(id: number, priority: Question["priority"]) {
     const newQuestions = [...questions];
@@ -37,6 +43,10 @@ function App() {
     setDifficultyFilter(difficulties);
   }
 
+  function filterByTopics(topics: Question["topic"][]) {
+    setTopicFilter(topics);
+  }
+
   return (
     <div className="App">
       <Header />
@@ -45,13 +55,17 @@ function App() {
           <Grid item xs={12} md={3}>
             <Cards
               difficultyFilter={difficultyFilter}
+              topicList={topicList}
+              topicFilter={topicFilter}
               filterByDifficulties={filterByDifficulty}
+              filterByTopics={filterByTopics}
             />
           </Grid>
           <Grid item xs={12} md={9}>
             <Table
               questions={questions}
               difficultyFilter={difficultyFilter}
+              topicFilter={topicFilter}
               handlePriorityToggle={handlePriorityToggle}
             />
           </Grid>

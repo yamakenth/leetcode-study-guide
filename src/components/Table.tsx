@@ -18,6 +18,7 @@ import getPriorityBgColor from "../utils/getPriorityBgColor";
 interface TableProps {
   questions: Question[];
   difficultyFilter: Question["difficulty"][];
+  topicFilter: Question["topic"][];
   handlePriorityToggle: (id: number, priority: Question["priority"]) => void;
 }
 
@@ -26,6 +27,7 @@ const headings = ["Priority", "Title", "Topic", "Difficulty"];
 export default function Table({
   questions,
   difficultyFilter,
+  topicFilter,
   handlePriorityToggle,
 }: TableProps) {
   return (
@@ -46,6 +48,7 @@ export default function Table({
               .filter((question) =>
                 difficultyFilter.includes(question.difficulty)
               )
+              .filter((question) => topicFilter.includes(question.topic))
               .map((question) => (
                 <TableRow
                   key={question.questionId}
