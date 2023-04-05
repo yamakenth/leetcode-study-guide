@@ -6,16 +6,16 @@ import {
 } from "@mui/material";
 import Card from "./Card";
 import getDifficultyColor from "../utils/getDifficultyColor";
-import Question from "../types/Question";
+import { Difficulty } from "../types/Question";
 import { ChangeEvent } from "react";
 import stringToTitleCase from "../utils/stringToTitleCase";
 
 interface DifficultyCheckboxCardProps {
-  difficultyFilter: Question["difficulty"][];
-  filterByDifficulties: (difficulties: Question["difficulty"][]) => void;
+  difficultyFilter: Difficulty[];
+  filterByDifficulties: (difficulties: Difficulty[]) => void;
 }
 
-const difficulties: Question["difficulty"][] = ["easy", "medium", "hard"];
+const difficulties: Difficulty[] = ["easy", "medium", "hard"];
 
 export default function DifficultyCheckboxCard({
   difficultyFilter,
@@ -23,7 +23,7 @@ export default function DifficultyCheckboxCard({
 }: DifficultyCheckboxCardProps) {
   function handleCheck(e: ChangeEvent<HTMLInputElement>) {
     const newDifficulties = [...difficultyFilter];
-    const newDifficulty = e.target.value as Question["difficulty"];
+    const newDifficulty = e.target.value as Difficulty;
     const idx = newDifficulties.indexOf(newDifficulty);
     if (idx !== -1) {
       newDifficulties.splice(idx, 1);

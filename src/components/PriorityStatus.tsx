@@ -1,17 +1,14 @@
 import { useState } from "react";
-import Question from "../types/Question";
+import { Priority } from "../types/Question";
 import PriorityIcon from "./PriorityIcon";
 
 interface PriorityStatusProps {
-  initialPriority: Question["priority"];
-  handlePriorityToggle: (
-    questionId: number,
-    priority: Question["priority"]
-  ) => void;
+  initialPriority: Priority;
+  handlePriorityToggle: (questionId: number, priority: Priority) => void;
   questionId: number;
 }
 
-const statuses: Question["priority"][] = [null, "high", "medium", "low"];
+const statuses: Priority[] = [null, "high", "medium", "low"];
 
 export default function PriorityStatus({
   initialPriority,

@@ -1,15 +1,15 @@
 import { Grid, Typography } from "@mui/material";
 import Card from "./Card";
 import DifficultyCheckboxCard from "./DifficultyCheckboxCard";
-import Question from "../types/Question";
+import { Difficulty } from "../types/Question";
 import TopicCheckboxCard from "./TopicCheckboxCard";
 
 interface CardsProps {
-  difficultyFilter: Question["difficulty"][];
-  topicList: Question["topic"][];
-  topicFilter: Question["topic"][];
-  filterByDifficulties: (difficulties: Question["difficulty"][]) => void;
-  filterByTopics: (topics: Question["topic"][]) => void;
+  difficultyFilter: Difficulty[];
+  topicList: string[];
+  topicFilter: string[];
+  filterByDifficulties: (difficulties: Difficulty[]) => void;
+  filterByTopics: (topics: string[]) => void;
 }
 
 export default function Cards({

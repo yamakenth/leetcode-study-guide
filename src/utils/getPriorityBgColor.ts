@@ -1,9 +1,7 @@
 import { amber, green, red } from "@mui/material/colors";
-import Question from "../types/Question";
+import { Priority } from "../types/Question";
 
-export default function getPriorityBgColor(
-  priority: Question["priority"]
-): string {
+export default function getPriorityBgColor(priority: Priority): string {
   switch (priority) {
     case "high":
       return red[100];

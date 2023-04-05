@@ -9,7 +9,7 @@ import {
   Typography,
   Link,
 } from "@mui/material";
-import Question from "../types/Question";
+import Question, { Difficulty, Priority } from "../types/Question";
 import stringToTitleCase from "../utils/stringToTitleCase";
 import getDifficultyColor from "../utils/getDifficultyColor";
 import PriorityStatus from "./PriorityStatus";
@@ -17,9 +17,9 @@ import getPriorityBgColor from "../utils/getPriorityBgColor";
 
 interface TableProps {
   questions: Question[];
-  difficultyFilter: Question["difficulty"][];
-  topicFilter: Question["topic"][];
-  handlePriorityToggle: (id: number, priority: Question["priority"]) => void;
+  difficultyFilter: Difficulty[];
+  topicFilter: string[];
+  handlePriorityToggle: (id: number, priority: Priority) => void;
 }
 
 const headings = ["Priority", "Title", "Topic", "Difficulty"];

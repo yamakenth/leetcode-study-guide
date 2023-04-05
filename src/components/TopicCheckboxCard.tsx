@@ -5,14 +5,13 @@ import {
   Typography,
 } from "@mui/material";
 import Card from "./Card";
-import Question from "../types/Question";
 import stringToTitleCase from "../utils/stringToTitleCase";
 import { ChangeEvent } from "react";
 
 interface TopicCheckboxCardProps {
-  topicList: Question["topic"][];
-  topicFilter: Question["topic"][];
-  filterByTopics: (topics: Question["topic"][]) => void;
+  topicList: string[];
+  topicFilter: string[];
+  filterByTopics: (topics: string[]) => void;
 }
 
 export default function TopicCheckboxCard({
@@ -22,7 +21,7 @@ export default function TopicCheckboxCard({
 }: TopicCheckboxCardProps) {
   function handleCheck(e: ChangeEvent<HTMLInputElement>) {
     const newTopics = [...topicFilter];
-    const newTopic = e.target.value as Question["topic"];
+    const newTopic = e.target.value as string;
     const idx = newTopics.indexOf(newTopic);
     if (idx !== -1) {
       newTopics.splice(idx, 1);

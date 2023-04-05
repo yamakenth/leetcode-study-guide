@@ -1,10 +1,8 @@
 import Question from "../types/Question";
 
-export default function createTopicList(
-  questions: Question[]
-): Question["topic"][] {
-  const uniqueTopics = new Set<Question["topic"]>();
+export default function createTopicList(questions: Question[]): string[] {
+  const uniqueTopics = new Set<string>();
   questions.forEach((question) => uniqueTopics.add(question.topic));
-  const res: Question["topic"][] = Array.from(uniqueTopics);
+  const res: string[] = Array.from(uniqueTopics);
   return res;
 }

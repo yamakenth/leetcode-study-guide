@@ -1,8 +1,6 @@
-import Question from "../types/Question";
+import { Difficulty } from "../types/Question";
 
-export default function getDifficultyColor(
-  difficulty: Question["difficulty"]
-): string {
+export default function getDifficultyColor(difficulty: Difficulty): string {
   switch (difficulty) {
     case "easy":
       return "success.light";

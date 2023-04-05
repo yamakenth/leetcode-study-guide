@@ -3,17 +3,13 @@ import Header from "./components/Header";
 import Cards from "./components/Cards";
 import { Container, Grid } from "@mui/material";
 import questionJSON from "./data/question-list.json";
-import Question from "./types/Question";
+import Question, { Difficulty, Priority } from "./types/Question";
 import createQuestions from "./utils/createQuestions";
 import useLocalStorageState from "./hooks/useLocalStorageState";
 import createTopicList from "./utils/createTopicList";
 
 const initialQuestions = createQuestions(questionJSON);
-const initialDifficultyFilter: Question["difficulty"][] = [
-  "easy",
-  "medium",
-  "hard",
-];
+const initialDifficultyFilter: Difficulty[] = ["easy", "medium", "hard"];
 
 function App() {
   const [questions, setQuestions] = useLocalStorageState<Question[]>(
@@ -21,14 +17,15 @@ function App() {
     initialQuestions
   );
   const [difficultyFilter, setDifficultyFilter] = useLocalStorageState<
-    Question["difficulty"][]
+    Difficulty[]
   >("difficulty-filter", initialDifficultyFilter);
   const topicList = createTopicList(questions);
-  const [topicFilter, setTopicFilter] = useLocalStorageState<
-    Question["topic"][]
-  >("topic-filter", topicList);
+  const [topicFilter, setTopicFilter] = useLocalStorageState<string[]>(
+    "topic-filter",
+    topicList
+  );
 
-  function handlePriorityToggle(id: number, priority: Question["priority"]) {
+  function handlePriorityToggle(id: number, priority: Priority) {
     const newQuestions = [...questions];
     const targetQuestion = newQuestions.find(
       (question) => question.questionId === id
@@ -39,11 +36,11 @@ function App() {
     setQuestions(newQuestions);
   }
 
-  function filterByDifficulty(difficulties: Question["difficulty"][]) {
+  function filterByDifficulty(difficulties: Difficulty[]) {
     setDifficultyFilter(difficulties);
   }
 
-  function filterByTopics(topics: Question["topic"][]) {
+  function filterByTopics(topics: string[]) {
     setTopicFilter(topics);
   }
 

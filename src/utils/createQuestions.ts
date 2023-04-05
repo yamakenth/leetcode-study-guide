@@ -1,4 +1,4 @@
-import Question from "../types/Question";
+import Question, { Difficulty } from "../types/Question";
 import RawQuestion from "../types/RawQuestion";
 
 export default function createQuestions(raw: RawQuestion[]): Question[] {
@@ -11,7 +11,7 @@ export default function createQuestions(raw: RawQuestion[]): Question[] {
       link: link,
       topic: category,
       priority: null,
-      difficulty: difficulty.toLowerCase() as Question["difficulty"],
+      difficulty: difficulty.toLowerCase() as Difficulty,
     });
   });
 
