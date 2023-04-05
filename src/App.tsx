@@ -2,13 +2,14 @@ import Table from "./components/Table";
 import Header from "./components/Header";
 import Cards from "./components/Cards";
 import { Container, Grid } from "@mui/material";
-import { useState } from "react";
 import initialQuestions from "./data/question-list.json";
 import Question from "./types/Question";
 import createQuestions from "./utils/createQuestions";
+import useLocalStorageState from "./hooks/useLocalStorageState";
 
 function App() {
-  const [questions, setQuestions] = useState<Question[]>(() =>
+  const [questions, setQuestions] = useLocalStorageState<Question[]>(
+    "questions",
     createQuestions(initialQuestions)
   );
 
