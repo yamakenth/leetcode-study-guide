@@ -2,8 +2,16 @@ import Table from "./components/Table";
 import Header from "./components/Header";
 import Cards from "./components/Cards";
 import { Container, Grid } from "@mui/material";
+import { useState } from "react";
+import initialQuestions from "./data/question-list.json";
+import Question from "./types/Question";
+import createQuestions from "./utils/createQuestions";
 
 function App() {
+  const [questions, setQuestions] = useState<Question[]>(() =>
+    createQuestions(initialQuestions)
+  );
+
   return (
     <div className="App">
       <Header />
@@ -13,7 +21,7 @@ function App() {
             <Cards />
           </Grid>
           <Grid item xs={12} md={9}>
-            <Table />
+            <Table questions={questions} />
           </Grid>
         </Grid>
       </Container>

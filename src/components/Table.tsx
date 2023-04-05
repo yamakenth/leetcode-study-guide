@@ -7,9 +7,14 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import questions from "../data/question-list.json";
+import Question from "../types/Question";
+import stringToTitleCase from "../utils/stringToTitleCase";
 
-export default function Table() {
+interface TableProps {
+  questions: Question[];
+}
+
+export default function Table({ questions }: TableProps) {
   return (
     <div>
       <TableContainer component={Paper}>
@@ -24,11 +29,11 @@ export default function Table() {
           </TableHead>
           <TableBody>
             {questions.map((question) => (
-              <TableRow key={question.problem_id}>
-                <TableCell>!!!</TableCell>
-                <TableCell>{`${question.problem_id}. ${question.problem}`}</TableCell>
-                <TableCell>{question.category}</TableCell>
-                <TableCell>{question.difficulty}</TableCell>
+              <TableRow key={question.questionId}>
+                <TableCell>{question.priority}</TableCell>
+                <TableCell>{`${question.questionId}. ${question.questionTitle}`}</TableCell>
+                <TableCell>{question.topic}</TableCell>
+                <TableCell>{stringToTitleCase(question.difficulty)}</TableCell>
               </TableRow>
             ))}
           </TableBody>
