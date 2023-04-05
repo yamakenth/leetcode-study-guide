@@ -1,10 +1,10 @@
 import { Grid, Typography } from "@mui/material";
-import Card from "./Card";
-import DifficultyCheckboxCard from "./DifficultyCheckboxCard";
+import Card from "../components/Card";
+import DifficultyCheckboxCard from "../components/DifficultyCheckboxCard";
 import { Difficulty } from "../types/Question";
-import TopicCheckboxCard from "./TopicCheckboxCard";
+import TopicCheckboxCard from "../components/TopicCheckboxCard";
 
-interface CardsProps {
+interface CardContainerProps {
   difficultyFilter: Difficulty[];
   topicList: string[];
   topicFilter: string[];
@@ -12,13 +12,13 @@ interface CardsProps {
   filterByTopics: (topics: string[]) => void;
 }
 
-export default function Cards({
+export default function CardContainer({
   difficultyFilter,
   topicList,
   topicFilter,
   filterByTopics,
   filterByDifficulties,
-}: CardsProps) {
+}: CardContainerProps) {
   return (
     <Grid container spacing={1}>
       <Grid item xs={4} md={12}>

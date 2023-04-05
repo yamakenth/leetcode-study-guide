@@ -1,6 +1,6 @@
 import Table from "./components/Table";
-import Header from "./components/Header";
-import Cards from "./components/Cards";
+import Header from "./containers/Header";
+import Cards from "./containers/CardContainer";
 import { Container, Grid } from "@mui/material";
 import questionJSON from "./data/question-list.json";
 import Question, { Difficulty, Priority } from "./types/Question";
