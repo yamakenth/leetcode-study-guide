@@ -7,6 +7,7 @@ import {
   TableHead,
   TableRow,
   Typography,
+  Link,
 } from "@mui/material";
 import Question from "../types/Question";
 import stringToTitleCase from "../utils/stringToTitleCase";
@@ -49,7 +50,14 @@ export default function Table({ questions, handlePriorityToggle }: TableProps) {
                   />
                 </TableCell>
                 <TableCell>
-                  <Typography>{`${question.questionId}. ${question.questionTitle}`}</Typography>
+                  <Link
+                    href={question.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    underline="hover"
+                  >
+                    <Typography>{`${question.questionId}. ${question.questionTitle}`}</Typography>
+                  </Link>
                 </TableCell>
                 <TableCell>
                   <Typography>{question.topic}</Typography>
