@@ -7,7 +7,7 @@ import Question, { Difficulty, Priority } from "./types/Question";
 import createQuestions from "./utils/createQuestions";
 import useLocalStorageState from "./hooks/useLocalStorageState";
 import createTopicList from "./utils/createTopicList";
-import calculateQuestionsSolved from "./utils/calculateQuestionsSovled";
+import calculateQuestionsSolved from "./utils/calculateQuestionsSolved";
 
 const initialQuestions = createQuestions(questionJSON);
 const initialDifficultyFilter: Difficulty[] = ["easy", "medium", "hard"];
