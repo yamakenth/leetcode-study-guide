@@ -6,13 +6,17 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Typography,
 } from "@mui/material";
 import Question from "../types/Question";
 import stringToTitleCase from "../utils/stringToTitleCase";
+import getDifficultyColor from "../utils/getDifficultyColor";
 
 interface TableProps {
   questions: Question[];
 }
+
+const headings = ["Priority", "Title", "Topic", "Difficulty"];
 
 export default function Table({ questions }: TableProps) {
   return (
@@ -21,19 +25,30 @@ export default function Table({ questions }: TableProps) {
         <MaterialTable sx={{ minWidth: 650 }} size="small">
           <TableHead>
             <TableRow>
-              <TableCell>Priority</TableCell>
-              <TableCell>Title</TableCell>
-              <TableCell>Topic</TableCell>
-              <TableCell>Difficulty</TableCell>
+              {headings.map((heading) => (
+                <TableCell key={heading}>
+                  <Typography>{heading}</Typography>
+                </TableCell>
+              ))}
             </TableRow>
           </TableHead>
           <TableBody>
             {questions.map((question) => (
               <TableRow key={question.questionId}>
-                <TableCell>{question.priority}</TableCell>
-                <TableCell>{`${question.questionId}. ${question.questionTitle}`}</TableCell>
-                <TableCell>{question.topic}</TableCell>
-                <TableCell>{stringToTitleCase(question.difficulty)}</TableCell>
+                <TableCell>
+                  <Typography>{question.priority}</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography>{`${question.questionId}. ${question.questionTitle}`}</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography>{question.topic}</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography color={getDifficultyColor(question.difficulty)}>
+                    {stringToTitleCase(question.difficulty)}
+                  </Typography>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
