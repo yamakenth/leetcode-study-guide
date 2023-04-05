@@ -2,7 +2,7 @@ import { Card, CardContent, Grid, Typography } from "@mui/material";
 
 export default function Cards() {
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={1}>
       <Grid item xs={4} md={12}>
         <Card sx={{ maxWidth: 240, height: 180, marginBottom: 4 }}>
           <CardContent>
