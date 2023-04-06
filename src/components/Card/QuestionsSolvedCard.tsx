@@ -21,7 +21,7 @@ export default function QuestionsSolvedCard({
       <Typography variant="h6" component="h2" gutterBottom>
         Solved Problems
       </Typography>
-      <Box display="flex" justifyContent="space-between" alignItems="center">
+      <Box display="flex" justifyContent="center" gap={2} alignItems="center">
         <Box sx={{ height: 100, width: 100 }}>
           <SolvedProblemChart questionsSolved={questionsSolved} />
         </Box>
