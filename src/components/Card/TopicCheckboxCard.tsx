@@ -32,13 +32,14 @@ export default function TopicCheckboxCard({
   }
 
   return (
-    <Card>
+    <Card sx={{ width: "100%", overflow: "auto" }}>
       <Typography variant="h6" component="h2" gutterBottom>
         Topics
       </Typography>
-      <FormGroup>
+      <FormGroup sx={{ height: { xs: 200, lg: "auto" } }}>
         {topicList.map((topic) => (
           <FormControlLabel
+            sx={{ width: 200 }}
             key={topic}
             control={
               <Checkbox

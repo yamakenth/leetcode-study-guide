@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Box } from "@mui/material";
 import DifficultyCheckboxCard from "../components/Card/DifficultyCheckboxCard";
 import { Difficulty } from "../types/Question";
 import TopicCheckboxCard from "../components/Card/TopicCheckboxCard";
@@ -23,23 +23,22 @@ export default function CardContainer({
   questionsSolved,
 }: CardContainerProps) {
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={4} lg={12}>
-        <QuestionsSolvedCard questionsSolved={questionsSolved} />
-      </Grid>
-      <Grid item xs={4} lg={12}>
-        <DifficultyCheckboxCard
-          difficultyFilter={difficultyFilter}
-          filterByDifficulties={filterByDifficulties}
-        />
-      </Grid>
-      <Grid item xs={4} lg={12}>
-        <TopicCheckboxCard
-          topicList={topicList}
-          topicFilter={topicFilter}
-          filterByTopics={filterByTopics}
-        />
-      </Grid>
-    </Grid>
+    <Box
+      display="flex"
+      flexDirection={{ xs: "row", lg: "column" }}
+      gap={2}
+      flexWrap="wrap"
+    >
+      <QuestionsSolvedCard questionsSolved={questionsSolved} />
+      <DifficultyCheckboxCard
+        difficultyFilter={difficultyFilter}
+        filterByDifficulties={filterByDifficulties}
+      />
+      <TopicCheckboxCard
+        topicList={topicList}
+        topicFilter={topicFilter}
+        filterByTopics={filterByTopics}
+      />
+    </Box>
   );
 }
