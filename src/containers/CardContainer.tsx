@@ -23,17 +23,17 @@ export default function CardContainer({
   questionsSolved,
 }: CardContainerProps) {
   return (
-    <Grid container spacing={1}>
-      <Grid item xs={4} md={12}>
+    <Grid container spacing={2}>
+      <Grid item xs={4} lg={12}>
         <QuestionsSolvedCard questionsSolved={questionsSolved} />
       </Grid>
-      <Grid item xs={4} md={12}>
+      <Grid item xs={4} lg={12}>
         <DifficultyCheckboxCard
           difficultyFilter={difficultyFilter}
           filterByDifficulties={filterByDifficulties}
         />
       </Grid>
-      <Grid item xs={4} md={12}>
+      <Grid item xs={4} lg={12}>
         <TopicCheckboxCard
           topicList={topicList}
           topicFilter={topicFilter}

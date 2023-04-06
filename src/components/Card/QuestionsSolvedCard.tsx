@@ -5,6 +5,7 @@ import getDifficultyColor from "../../utils/getDifficultyColor";
 import { grey } from "@mui/material/colors";
 import { Difficulty } from "../../types/Question";
 import stringToTitleCase from "../../utils/stringToTitleCase";
+import SolvedProblemChart from "../SolvedProblemChart";
 
 interface QuestionsSolvedCardProps {
   questionsSolved: QuestionSolved;
@@ -20,8 +21,10 @@ export default function QuestionsSolvedCard({
       <Typography variant="h6" component="h2" gutterBottom>
         Solved Problems
       </Typography>
-      <Box display="flex">
-        <Box>Doughnut Chart</Box>
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Box sx={{ height: 100, width: 100 }}>
+          <SolvedProblemChart questionsSolved={questionsSolved} />
+        </Box>
         <Box>
           {difficulties.map((difficulty) => (
             <Box
@@ -33,7 +36,7 @@ export default function QuestionsSolvedCard({
               <Typography color={getDifficultyColor(difficulty)}>
                 {stringToTitleCase(difficulty)}
               </Typography>
-              <Box display="flex" alignItems="flex-end">
+              <Box display="flex" alignItems="baseline">
                 <Typography variant="body1">
                   {questionsSolved[difficulty].solved}
                 </Typography>

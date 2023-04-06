@@ -1,14 +1,17 @@
 import { Difficulty } from "../types/Question";
 
-export default function getDifficultyColor(difficulty: Difficulty): string {
+export default function getDifficultyColor(
+  difficulty: Difficulty,
+  hex: boolean = false
+): string {
   switch (difficulty) {
     case "easy":
-      return "success.light";
+      return hex ? "#81c784" : "success.light";
     case "medium":
-      return "warning.light";
+      return hex ? "#ffb74d" : "warning.light";
     case "hard":
-      return "error.main";
+      return hex ? "#f44336" : "error.main";
     default:
-      return "primary";
+      return hex ? "#90caf9" : "primary";
   }
 }

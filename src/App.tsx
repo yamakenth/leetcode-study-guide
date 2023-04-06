@@ -50,7 +50,7 @@ function App() {
       <Header />
       <Container sx={{ padding: "24px 0" }}>
         <Grid container spacing={2}>
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} lg={3}>
             <CardContainer
               difficultyFilter={difficultyFilter}
               topicList={topicList}
@@ -60,7 +60,7 @@ function App() {
               questionsSolved={calculateQuestionsSolved(questions)}
             />
           </Grid>
-          <Grid item xs={12} md={9}>
+          <Grid item xs={12} lg={9}>
             <Table
               questions={questions}
               difficultyFilter={difficultyFilter}
