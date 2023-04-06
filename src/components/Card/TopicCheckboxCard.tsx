@@ -33,7 +33,12 @@ export default function TopicCheckboxCard({
 
   return (
     <Card sx={{ width: "100%", overflow: "auto" }}>
-      <Typography variant="h6" component="h2" gutterBottom>
+      <Typography
+        variant="h6"
+        component="h2"
+        gutterBottom
+        color={topicList.length !== topicFilter.length ? "secondary" : ""}
+      >
         Topics
       </Typography>
       <FormGroup sx={{ height: { xs: 200, lg: "auto" } }}>

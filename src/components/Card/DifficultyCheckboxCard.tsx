@@ -35,7 +35,12 @@ export default function DifficultyCheckboxCard({
 
   return (
     <Card>
-      <Typography variant="h6" component="h2" gutterBottom>
+      <Typography
+        variant="h6"
+        component="h2"
+        gutterBottom
+        color={difficultyFilter.length !== 3 ? "secondary" : ""}
+      >
         Difficulty
       </Typography>
       <FormGroup>
